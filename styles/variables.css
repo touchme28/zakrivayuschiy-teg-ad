@@ -1,4 +1,3 @@
-/* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
 :root {
     --main-font: 'Inter-Variable';
     --accent-font: 'PressStartP-Regular';
@@ -10,6 +9,8 @@
 
     --inline-size-for-blocks: clamp(375px, 80%, 700px);
 
+    --main-color: #fff;
+    --accent-color: #000;
     --bg-card-color: #fff;
     --main-border-color: #000;
     --border-label-color: #fff;
@@ -33,4 +34,6 @@
             #e7e7e7 0.01%,
             #1a1a1a
         );
+    --contour-color: #000;
+    --animation-fill-color: #FF0000;
 }

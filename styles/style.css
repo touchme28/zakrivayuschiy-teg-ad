@@ -1,14 +1,20 @@
-/* Здесь вы напишете основную часть стилей страницы.
+@keyframes scale_heart {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.25);
+  }
+}
 
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
+@keyframes opacity_sparks {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
 .page {
   min-inline-size: 320px;
@@ -88,7 +94,7 @@
   inline-size: 100%;
 }
 
-.first-img { 
+.first-img {
   filter: contrast(20%);
 }
 
@@ -109,7 +115,7 @@
 }
 
 .sixth-img {
-  filter: sepia(1) contrast(2) brightness(200%);;
+  filter: sepia(1) contrast(2) brightness(200%);
 }
 
 .seventh-img {
@@ -120,20 +126,21 @@
   position: absolute;
   top: 25px;
   right: 13px;
-
+  z-index: 1;
   font-family: var(--accent-font), sans-serif;
   font-size: var(--accent-font-size);
   opacity: 50%;
   mix-blend-mode: hard-light;
 
-  text-shadow:
-    -1px 0 var(--border-label-color, #fff), 
-    0 1px var(--border-label-color, #fff), 
-    1px 0 var(--border-label-color, #fff), 
+  text-shadow: -1px 0 var(--border-label-color, #fff),
+    0 1px var(--border-label-color, #fff), 1px 0 var(--border-label-color, #fff),
     0 -1px var(--border-label-color, #fff);
 }
 
-@supports ((text-stroke: 1px var(--border-label-color, #fff)) or (-webkit-text-stroke: 1px var(--border-label-color, #fff))){
+@supports (
+  (text-stroke: 1px var(--border-label-color, #fff)) or
+    (-webkit-text-stroke: 1px var(--border-label-color, #fff))
+) {
   .card__label {
     -webkit-text-stroke: 1px var(--border-label-color, #fff);
     text-stroke: 1px var(--border-label-color, #fff);
@@ -150,21 +157,122 @@
 .buttons {
   display: flex;
   justify-content: flex-end;
+  align-items: center; /* сомнительно но ОУКЭЭЙ */
+  gap: 12px;
   padding-right: 25px;
   padding-bottom: 25px;
 }
 
 .like-icon {
+  cursor: pointer;
+}
 
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: scale_heart 0.3s 1 ease-in 0.1s;
+}
+
+.like-icon .contour {
+  transition: fill 0.1s linear;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color);
+  transition: fill 0.3s linear;
+  transition-delay: 0.06s;
+}
+
+.like-icon .main-body {
+  fill: transparent;
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon .core {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+.sparks {
+  opacity: 0;
+}
+
+.like-icon.is-liked .sparks {
+  animation: opacity_sparks 0.3s 1 ease-in 0.3s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon:not(:hover) .main-body {
+  fill: transparent;
+  transition-delay: 0s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color);
+  transition-delay: 0.05s;
+}
+
+.like-icon:hover .core {
+  fill: var(--contour-color);
+  transition-delay: 0s;
+}
+
+.like-icon:not(:hover) .core {
+  fill: transparent;
+  transition-delay: 0.03s;
+}
+
+.like-icon:active .core {
+  fill: var(--animation-fill-color);
+  transition-delay: 0s;
+}
+
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color);
+  transition-delay: 0s;
 }
 
 .button-template {
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: var(--bg-card-color, #fff);
   border: 2px solid var(--main-border-color, #000);
   cursor: pointer;
+  transition: box-shadow 0.3s ease;
+}
+
+.button-template::before {
+  content: "";
+  position: absolute;
+  background-color: var(--accent-color, #000);
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+  transform: scaleX(0);
+  transform-origin: left;
+  z-index: 0;
+}
+
+.button-template:hover::before {
+  transform: scaleX(1);
+}
+
+.button-template:focus {
+  outline: none;
+}
+
+.button-template:focus-visible {
+  box-shadow: 2px 2px 0 var(--main-border-color, #000);
 }
 
 .card__like-button {
@@ -173,11 +281,26 @@
 }
 
 .card__icon-button {
+  block-size: 34px; /* чтобы outline были в одном ряду с кнопкой Like */
   background-color: transparent;
   border: none;
+  outline: 2px solid transparent;
+  transition: outline 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  outline: 2px solid var(--accent-color, #000);
 }
 
 .button__text {
+  position: relative;
+  z-index: 1;
+  color: var(--main-color, #fff);
+  mix-blend-mode: difference;
   font-family: var(--accent-font), sans-serif;
   font-size: var(--accent-font-size);
   line-height: 90%;
@@ -193,6 +316,11 @@
   margin: 0 auto 100px;
 }
 
+.save-button__disk-svg {
+  filter: invert(1); /* чтобы работал режим смешивания */
+  mix-blend-mode: difference;
+}
+
 dialog[open] {
   block-size: 191px;
   inline-size: clamp(341px, 100%, 353px);
@@ -200,7 +328,7 @@ dialog[open] {
   display: grid;
   grid-template-columns: min-content 1fr;
   grid-template-rows: 3fr 2fr;
-  gap:12px; /* подобрал 12 (хз почему не 20) */
+  gap: 12px; /* подобрал 12 (хз почему не 20) */
 }
 
 dialog[open] svg {
@@ -217,17 +345,17 @@ dialog[open] span {
   align-self: center;
 }
 
-dialog[open] button{
+dialog[open] button {
   grid-column: 1 / 3;
   grid-row: span 2;
-  margin-top:10px;
+  margin-top: 10px;
 }
 
 dialog::backdrop {
-  background-color: rgb( 0 0 0 / 0.75);
+  background-color: rgb(0 0 0 / 0.75);
 }
 
-@media(width <= 375px) {
+@media (width <= 375px) {
   .header {
     inline-size: 100%;
     block-size: 327px;
