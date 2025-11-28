@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Закрывающий тег</title>
+
+    <link rel="icon" href="./images/favicon.ico" sizes="any">
+    <link rel="icon" href="./images/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="./images/apple-touch-icon.png">
+
     <link rel="stylesheet" href="./fonts/fonts.css" />
     <link rel="stylesheet" href="./styles/variables.css" />
     <link rel="stylesheet" href="./styles/globals.css" />
@@ -11,8 +16,38 @@
     <link rel="stylesheet" href="./styles/animations.css" />
   </head>
   <body class="page">
-    <header class="header"></header>
-    <main></main>
+    <header class="header inline_size">
+      <h1 class="header__title_h1 header__title">&lt;/html&gt;</h1>
+      <h2 class="header__title_h2 header__title">закрывающий тег</h2>
+    </header>
+    <main class="main">
+      <div class="card inline_size">
+        <h3 class="card__title">Фритрек и нулевой спринт: Подготовка к работе</h3>
+        <img src="./images/truck.png" alt="Картинка трейлера для путешествий в пиксельном стиле"
+        class="card__image">
+        <p class="card__text">
+          Это было самое начало пути. На этом этапе важно было проникнуться основами и 
+          настроиться на учёбу. И, возможно, подумать, как новые знания могут повлиять на ваше 
+          будущее. <br> <br>
+          Место для ваших воспоминаний о начале обучения.
+        </p>
+        <div class="buttons">
+          <button class="card__icon-button">
+            <img src="./svg/heart in paths.svg" class="like-icon">
+          </button>
+          <button class="card__like-button">
+            <span class="button__text">Like</span>
+          </button>
+        </div>
+        
+      </div>
+      <button class="save-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="21">
+          <use href="./svg/floppy.svg#truck" />
+        </svg>
+        <span class="button__text">Сохранить на память</span>
+      </button>
+    </main>
     <script src="./scripts/like.js"></script>
   </body>
 </html>

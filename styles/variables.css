@@ -1,1 +1,9 @@
 /* В этом файле будут храниться все значения переменных в исходном состоянии, а так же их изменения в зависимости от ширины устройства */
+:root {
+    --main-font: 'Inter-Variable';
+    --accent-font: 'PressStartP-Regular';
+    --wght-title: 700;
+    --wght-text: 400;
+
+    --inline-size-for-blocks: clamp(375px, 80%, 700px);
+}

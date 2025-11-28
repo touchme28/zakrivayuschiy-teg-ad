@@ -13,4 +13,135 @@
 .page {
   min-inline-size: 320px;
   min-block-size: 100dvb;
+
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center; */
+
+  font-family: var(--main-font), sans-serif;
+  font-variation-settings: "wght" var(--wght-text);
+
+  background-image: url(../images/background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+.inline_size {
+  inline-size: var(--inline-size-for-blocks);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  /* высота тоже резиновая (сначала 327 потом 368) хз че делать тут, поставил статичную */
+  /* block-size: 368px; */
+  /* block-size: clamp(327px, 80%, 368px); */
+  block-size: 327px;
+  background-color: #fff;
+
+  margin: 100px auto;
+  border: 2px solid #000;
+}
+
+@media(width <= 375px) {
+  .header {
+    inline-size: 100%;
+  }
+  .card {
+    inline-size: 100%;
+  }
+}
+
+.header__title {
+  font-family: var(--accent-font), sans-serif;
+  text-transform: uppercase;
+}
+
+.header__title_h1 {
+  font-size: clamp(3.0625rem, 2.7104rem + 1.5023vw, 4.0625rem);
+}
+
+.header__title_h2 {
+  font-size: clamp(0.875rem, 0.6769rem + 0.8451vw, 1.4375rem);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+
+.card {
+  margin: 0 auto;
+  background-color: #fff;
+  border: 2px solid #000;
+}
+
+.card__title {
+  font-variation-settings: "wght" var(--wght-title);
+  font-size: 18px;
+  padding: 5px 10px; /* на самом деле там 4+6, а не 5+5, но энивей */
+}
+
+.card__image {
+  block-size: 100%;
+  inline-size: 100%;
+}
+
+.card__text {
+  padding: 25px;
+  font-size: 18px;
+  line-height: 21px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 25px;
+  padding-bottom: 25px;
+}
+
+.like-icon {
+
+}
+
+.card__like-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+  border: 2px solid #000;
+  block-size: 38px;
+  inline-size: 130px;
+}
+
+.card__icon-button {
+  background-color: transparent;
+  border: none;
+}
+
+.button__text {
+  font-family: var(--accent-font), sans-serif;
+  font-size: 14px;
+  line-height: 90%;
+}
+
+.save-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  background-color: #fff;
+  border: 2px solid #000;
+  block-size: 55px;
+  inline-size: 335px;
+
+  margin: 0 auto;
 }
