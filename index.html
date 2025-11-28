@@ -509,24 +509,22 @@
       </button>
 
       <dialog id="save-button__dialog">
-        <form method="dialog">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="21"
-            height="21"
-            class="save-button__disk-svg"
-          >
-            <use href="./svg/floppy.svg#disk" />
-          </svg>
-          <span class="button__text">Вставьте дискету, чтобы продолжить</span>
-          <button
-            class="button-template"
-            type="button"
-            onclick="window['save-button__dialog'].close()"
-          >
-            <span class="button__text">ОК</span>
-          </button>
-        </form>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="21"
+          height="21"
+          class="save-button__disk-svg"
+        >
+          <use href="./svg/floppy.svg#disk" />
+        </svg>
+        <span class="button__text">Вставьте дискету, чтобы продолжить</span>
+        <button
+          class="button-template"
+          type="button"
+          onclick="window['save-button__dialog'].close()"
+        >
+          <span class="button__text">ОК</span>
+        </button>
       </dialog>
     </main>
     <script src="./scripts/like.js"></script>
