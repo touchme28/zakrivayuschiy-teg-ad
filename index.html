@@ -495,7 +495,7 @@
       <button
         class="save-button button-template"
         type="button"
-        onclick="window['save-button__dialog'].showModal();"
+        onclick="handleSAVE(event)"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -520,8 +520,8 @@
         <span class="button__text">Вставьте дискету, чтобы продолжить</span>
         <button
           class="button-template"
-          type="submit"
-          onclick="window['save-button__dialog'].close()"
+          type="button"
+          onclick="handleOK(event)" 
         >
           <span class="button__text">ОК</span>
         </button>
@@ -530,3 +530,6 @@
     <script src="./scripts/like.js"></script>
   </body>
 </html>
+
+<!-- onclick="window['save-button__dialog'].showModal();" -->
+<!-- onclick="window['save-button__dialog'].close()" -->
