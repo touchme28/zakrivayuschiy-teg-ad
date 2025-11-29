@@ -494,7 +494,7 @@
       </div>
       <button
         class="save-button button-template"
-        type="button"
+        type="submit"
         onclick="window['save-button__dialog'].showModal();"
         aria-controls="save-button__dialog"
       >
@@ -506,7 +506,7 @@
         >
           <use href="./svg/floppy.svg#disk" />
         </svg>
-        <span class="button__text">Сохранить на память test</span>
+        <span class="button__text">Сохранить на память</span>
       </button>
 
       <dialog id="save-button__dialog">
@@ -521,16 +521,14 @@
         <span class="button__text">Вставьте дискету, чтобы продолжить</span>
         <button
           class="button-template"
-          type="button"
+          type="submit"
           onclick="window['save-button__dialog'].close()"
           aria-controls="save-button__dialog"
         >
-          <span class="button__text">ОК test</span>
+          <span class="button__text">ОК</span>
         </button>
       </dialog>
     </main>
     <script src="./scripts/like.js"></script>
   </body>
 </html>
-
-<!-- onclick="window['save-button__dialog'].close()" -->
