@@ -29,15 +29,3 @@ function setButtonText(heart, button) {
     );
   }
 }
-
-function handleSAVE(event) {
-  event.preventDefault();
-  window['save-button__dialog'].showModal();
-}
-
-function handleOK(event) {
-  event.preventDefault();
-  window['save-button__dialog'].close()
-}
-
-

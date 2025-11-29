@@ -495,7 +495,8 @@
       <button
         class="save-button button-template"
         type="button"
-        onclick="handleSAVE(event)"
+        onclick="window['save-button__dialog'].showModal();"
+        aria-controls="save-button__dialog"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -505,7 +506,7 @@
         >
           <use href="./svg/floppy.svg#disk" />
         </svg>
-        <span class="button__text">Сохранить на память</span>
+        <span class="button__text">Сохранить на память test</span>
       </button>
 
       <dialog id="save-button__dialog">
@@ -521,9 +522,10 @@
         <button
           class="button-template"
           type="button"
-          onclick="handleOK(event)" 
+          onclick="window['save-button__dialog'].close()"
+          aria-controls="save-button__dialog"
         >
-          <span class="button__text">ОК</span>
+          <span class="button__text">ОК test</span>
         </button>
       </dialog>
     </main>
@@ -531,5 +533,4 @@
   </body>
 </html>
 
-<!-- onclick="window['save-button__dialog'].showModal();" -->
 <!-- onclick="window['save-button__dialog'].close()" -->
